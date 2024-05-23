@@ -10,7 +10,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                bat 'javac -encoding UTF-8 -d classes SW/src/**/*.java'
+                bat 'javac -encoding UTF-8 -d classes src/**/*.java'
             }
         }
         
