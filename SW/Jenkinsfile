@@ -10,7 +10,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                 bat 'javac -cp "C:/Users/alsrud/eclipse/jee-2024-03/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar;SW/src" -encoding UTF-8 -d classes SW/src/BookManagerTest.java'
+                 bat 'javac -encoding UTF-8 -d classes SW/src/BookManagerTest.java SW/src/BookManagerTest2.java'
             }
         }
         
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     def junitPath = "C:/Users/alsrud/eclipse/jee-2024-03/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar"
-					def classpath = "classes;lib;${junitPath}"
+                    def classpath = "classes;lib;${junitPath}"
                     bat "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt"
                 }
             }
