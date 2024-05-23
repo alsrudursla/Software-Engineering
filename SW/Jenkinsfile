@@ -11,7 +11,6 @@ pipeline {
         stage('Build') {
             steps {
             	bat 'javac -cp "C:/Users/alsrud/eclipse/jee-2024-03/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar;SW/src" -encoding UTF-8 -d classes SW/src/BookManagerTest.java'
-            	bat 'javac -cp "C:/Users/alsrud/eclipse/jee-2024-03/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar;SW/src" -encoding UTF-8 -d classes SW/src/BookManagerTest2.java'
             }
         }
         
@@ -20,8 +19,7 @@ pipeline {
                 script {
                     def junitPath = "C:/Users/alsrud/eclipse/jee-2024-03/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar"
                     def classpath = "classes;lib;${junitPath}"
-                    bat "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results_1.txt"
-                    bat "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results_2.txt"
+                    bat "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt"
                 }
             }
         }
@@ -29,8 +27,7 @@ pipeline {
     
     post {
         always {
-            archiveArtifacts 'test_results_1.txt'
-            archiveArtifacts 'test_results_2.txt'
+            archiveArtifacts 'test_results.txt'
         }
         failure {
             echo 'Build or test failed'
