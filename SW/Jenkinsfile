@@ -17,7 +17,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    def classpath = "classes;lib/;C:/Users/alsrud/eclipse/jee-2024-03/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar"
+                    def junitPath = "C:/Users/alsrud/eclipse/jee-2024-03/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar"
+					def classpath = "classes;lib;${junitPath}"
                     bat "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt"
                 }
             }
