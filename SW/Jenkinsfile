@@ -10,17 +10,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                script {
-                    def srcFiles = []
-                    def srcDir = new File('SW/src')
-                    srcDir.eachFileRecurse { file ->
-                        if (file.name.endsWith('.java')) {
-                            srcFiles << file.path
-                        }
-                    }
-                    def files = srcFiles.join(' ')
-                    bat "javac -encoding UTF-8 -d classes ${files}"
-            	}
+                 bat 'javac -encoding UTF-8 -d classes SW/src/BookManagerTest.java'
             }
         }
         
