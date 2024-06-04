@@ -11,7 +11,7 @@ class BookManagerTest3 {
     void setUp() throws Exception {
         bookManager = new BookManager();
     }
-
+    
     @Test
     void testAddBook() {
         Book book1 = bookManager.addBook(1, "자바 기초", "Jane", 2021);
