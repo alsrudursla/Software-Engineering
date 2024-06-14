@@ -20,16 +20,31 @@ public class BookManager {
 	}
 	
 	public Book searchBook(int id) {
+		long startTime = System.currentTimeMillis();
+		System.out.println("> startTime: " + startTime);
+		
 		for (Book book : bookList) {
 			if (book.getId() == id) {
+				long endTime = System.currentTimeMillis();
+				System.out.println("> endTime: " + endTime);
+				System.out.println("> Basic search operation performance: " + (endTime - startTime) + " ms\n");
+				
 				return book;
 			}
 		}
+		
+		long endTime = System.currentTimeMillis();
+		System.out.println("> endTime: " + endTime);
+		System.out.println("> Basic search operation performance (Book Not Found): " + (endTime - startTime) + " ms\n");
+		
 		return null;
 		
 	}
 	
 	public Book search_bs(int id) {
+		long startTime = System.currentTimeMillis();
+		System.out.println("> startTime: " + startTime);
+		
 		// bookList 를 id 값을 기준으로 정렬
 		Collections.sort(bookList, Comparator.comparingInt(Book::getId));
 		
@@ -44,9 +59,17 @@ public class BookManager {
 			} else if (mid_val.getId() < id) {
 				start_idx = mid_idx + 1;
 			} else {
+				long endTime = System.currentTimeMillis();
+				System.out.println("> endTime: " + endTime);
+				System.out.println("> Binary search operation performance: " + (endTime - startTime) + " ms\n");
+				
 				return mid_val;
 			}
 		}
+		
+		long endTime = System.currentTimeMillis();
+		System.out.println("> endTime: " + endTime);
+		System.out.println("> Binary search operation performance (Book Not Found): " + (endTime - startTime) + " ms\n");
 		
 		// 찾는 id 값이 없을 시 null 값 리턴
 		return null;
