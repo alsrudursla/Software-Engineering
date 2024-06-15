@@ -10,7 +10,7 @@ pipeline {
         
         stage('Build') {
             steps {
-            	bat 'javac -cp "C:/Users/alsrud/eclipse/jee-2024-03/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar;SW/src" -encoding UTF-8 -d classes SW/src/BookManagerTest.java'
+            	bat 'javac -cp "C:/Users/alsrud/eclipse/jee-2024-03/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar;SW/src" -encoding UTF-8 -d classes SW/src/BookManagerTest3.java'
             }
         }
         
